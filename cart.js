@@ -7,7 +7,6 @@
     creating customer objects.  
 */
 
-
 //////////////////PROBLEM 1////////////////////
 /*  
     Below is a cart array that has food objects
@@ -19,24 +18,27 @@
 */
 
 const cart = [
-    {
-        name: 'pizza', 
-        price: 9.99
-    }, 
-    {
-        name: 'pasta', 
-        price: 8.99
-    }, 
-    {
-        name: 'salad', 
-        price: 7.99
-    }
-]
+  {
+    name: "pizza",
+    price: 9.99,
+  },
+  {
+    name: "pasta",
+    price: 8.99,
+  },
+  {
+    name: "salad",
+    price: 7.99,
+  },
+];
 
 //CODE HERE
 
-// const summedPrice = cart.reduce(/* CALLBACK HERE */)
-
+const summedPrice = cart.reduce((acc, curr) => {
+  return acc + curr.price;
+}, 0);
+console.log(summedPrice);
+console.log("---------");
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -54,8 +56,13 @@ const cart = [
 */
 
 //CODE HERE
-
-
+function calcFinalPrice(cartTotal, couponValue, tax) {
+  let total = cartTotal + cartTotal * tax;
+  let finalresult = total - couponValue;
+  return finalresult;
+}
+console.log(calcFinalPrice(summedPrice, 2, 0.06));
+console.log("----------")
 
 //////////////////PROBLEM 3////////////////////
 /*  
@@ -78,7 +85,16 @@ const cart = [
 */
 
 /*
-    TEXT ANSWER HERE
+    Creating an object called `customer` that has 7
+    properties: 
+        - cusiId:(number) its an unique identifier which will differentiate customers.hence it is number datatype. 
+        -custName:(string) Its a string having name of customer.
+        -custAddress: (string) string datatype since it is adress of customer.required for invoice and shipping.
+        -phone: (number) phone number of customer for verification or deals related alerts.
+        -textInvoice:(boolean) boolean so that it will be set according to customer preference.
+                    It will be true if customer wishes to receive invoice related alerts on his mobile.
+        -email:(string) it is an email id of customer having special characters hence string datatype.
+        -defaultPaymentMethod:(string) this can be string having choices- card or cash or null depend on customer.this field will be set by customer input.
 
 */
 
@@ -88,3 +104,13 @@ const cart = [
 */
 
 //CODE HERE
+const customer = {
+  cusiId: 1,
+  custName: "John",
+  custAddress: "304 hackbright LockManager,texas",
+  phone: 2489546557,
+  textInvoice: true,
+  email: "abc@gmail.com",
+  defaultPaymentMethod: "card",
+};
+console.log(customer)
